@@ -1,7 +1,7 @@
 def knapsack(capacity, weights, values):
     """
     Solve the 0/1 Knapsack problem using dynamic programming.
-    
+
     :param capacity: int - The maximum capacity of the knapsack.
     :param weights: List[int] - The weights of the items.
     :param values: List[int] - The values of the items.
@@ -13,7 +13,9 @@ def knapsack(capacity, weights, values):
     n = len(weights)
 
     # Create a DP table
-    dp = [[0] * (capacity + 1) for _ in range(n + 1)]
+    dp = []  
+    for i in range(n + 1):  # row : 0 - weight (nums = wight+1)
+        dp.append([0] * (capacity + 1))  # column : 0 - capcity (nums = capacity+1) 
 
     # Fill the DP table
     for i in range(1, n + 1):
@@ -53,4 +55,3 @@ if __name__ == "__main__":
     weights = [3, 1, 3, 4, 2]
     max_profit, items = knapsack(capacity, weights, values)
     print(f"Maximum Profit: {max_profit}, Selected Items: {items}")
-
